@@ -20,13 +20,21 @@ Gossip
 Join table: tag<=>gossip  
 Like  
 Private message  
-Tag      
+Tag   
+
+### Views  
+
+Home  
+Contact  
+Show(gossip)  
+Team  
+User_show  
+Welcome  
 
 ### Pour test
-Ouvrir le dossier  
-Faire  
- ```Bundle install```        
-Lancer     
-```rails db:seed```    
-Et lancer la console rails pour test     
-```rails console```  
+Lancer   
+```rails server``  
+Puis aller sur  
+```http://localhost:3000/``  
+Sur votre navigateur favori...  
+Enjoy...

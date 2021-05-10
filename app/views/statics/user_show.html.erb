@@ -31,9 +31,9 @@
     <div class='text-center p-3'>
       <h3>Fiche utilisateur</h3>
     </div>
-    <div class='containerfluid bg-light p-2 row d-flex justify-content-around align-items-center'>
+    <div class='containerfluid bg-light p-2 row no-gutter d-flex justify-content-around align-items-center'>
       <i class=" col text-center fas fa-user-tag fa-10x"></i>
-      <div class='show_content col container border border-warning rounded-3 border-5 mt-4 p-5 '>
+      <div class='show_content col container border border-warning rounded-3 border-5 mt-1 p-5 '>
         <p>N<span class='red'>o</span>m :       <%=@user.last_name%></p>
         <p>Prén<span class='red'>o</span>m :    <%=@user.first_name%></p>
         <p>Email :        <%=@user.email%></p>
@@ -44,7 +44,7 @@
     </div>
 
 
-    <div class='containerfluid bg-secondary px-5 pt-3 pb-5 row d-flex justify-content-evenly'>
+    <div class='containerfluid bg-secondary px-5 pt-3 pb-5 row no-gutter d-flex justify-content-evenly'>
       <h3 class='m-3 text-center'> Tous les P<span class='red'>o</span>tins de <%=@user.first_name%> <%=@user.last_name%></h3>
       <%@user.gossips.each do |gossip|%>
       <div class="card m-3" style="width: 18rem;">
@@ -52,7 +52,10 @@
         <div class="card-body ">
           <h5 class="card-title"><%=gossip.title%></h5>
           <h6 class='text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
-          <a href=<%= gossip_path(gossip.id)%> class="btn btn-warning ">Voir le potin</a>
+          <hr class='border border-1 border-danger'>
+        </div>
+        <div class=''>
+          <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
         </div>
       </div>
       <%end%>

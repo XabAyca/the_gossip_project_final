@@ -33,6 +33,11 @@
 }
 
 .show_content{
-  font-size: 22px;
+  font-size: 20px;
   color: #454545;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
 }

@@ -40,15 +40,20 @@
     </div>
   </div>
 
-  <div class='containerfluid bg-secondary px-5 py-3 row d-flex justify-content-evenly'>
+  <div class='bg-secondary px-5 py-3 row no-gutter d-flex justify-content-evenly'>
     <%@gossips.each do |gossip|%>
-    <div class="card m-3" style="width: 18rem;">
-      <i class="far fa-newspaper fa-3x text-center mt-2"></i>
-      <div class="card-body ">
-        <h5 class="card-title"><%=gossip.title%></h5>
-        <h6 class='text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
-        <a href=<%= gossip_path(gossip.id)%> class="btn btn-warning">Voir le potin</a>
+    <div class=" card m-3" style="width: 18rem;">
+      <i class=" far fa-newspaper fa-3x text-center mt-2"></i>
+      <div class="card-body">
+        <h5 class=" card-title"><%=gossip.title%></h5>
+        <h6 class=' text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
+        <hr class='border border-1 border-danger'>
       </div>
+      
+      <div class=''>
+        <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
+      </div>
+      
     </div>
     <%end%>
   </div>
