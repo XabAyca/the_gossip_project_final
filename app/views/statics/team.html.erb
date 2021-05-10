@@ -9,30 +9,52 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <a class="navbar-brand" href="#">Gossip Project</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-3 fixed-top">
+        <a class="navbar-brand" href=<%=root_path%>>G<span class='red'>o</span>ssip Pr<span class='red'>o</span>ject</a>
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href=<%=root_path%>>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Team</a>
+              <a class="nav-link" href=<%=team_path%>>Team</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href=<%=contact_path%>>Contact</a>
             </li>
           </ul>
         </div>
       </nav>
   </header>
+
+  <div class='containerfluid pt-5'>
+    <div class ='containerfluid py-4' >
+      <h3 class='text-center'>La team</h3>
+      <h2 class='text-center'>P<span class='red'>o</span>wer C<span class='red'>o</span>ders</h2>
+    </div>
+
+    <div class='containerfluid bg-light'>
+      <div class='container py-3'>
+        <p>Salut la famille. Je te présente les Power Coders une team de futur-développeur<br>
+        Toujours prêt à sortir les claviers(...on pense au clavier mécanique très bruyant d'Antho).<br>
+        Au menu tu trouveras:</p>
+        <ul>
+          <li>Antho alias Le Vibro - <span class='red'>Force rouge</span></li>
+          <li>Pascaline alias la fille du groupe... (pas de sexisme chez THP) - <span class='pink'>Force rose</span></li></li>
+          <li>Xabi alias Xabi - <span class='yellow'>Force jaune</span></li></li>
+        <ul>
+      </div>
+    </div>
+
+    <div class='containerfluid text-center'>
+      <img src='assets/powercoders.jpeg' alt='powercoders' class='rounded'>
+  </div>
+
+  <footer class="footer py-3 bg-light">
+    <div class="container">
+      <span class="text-muted"> © The Gossip Project & THP - By The Power Coders</span>
+    </div>
+</footer>
 
 </body>
 </html>

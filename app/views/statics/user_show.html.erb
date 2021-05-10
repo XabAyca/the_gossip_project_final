@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gossip Project Team's</title>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+        <a class="navbar-brand" href=<%=root_path%>>G<span class='red'>o</span>ssip Pr<span class='red'>o</span>ject</a>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href=<%=root_path%>>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=<%=team_path%>>Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href=<%=contact_path%>>Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  </header>
+
+  <div class='containerfluid'>
+    <div class='text-center p-3'>
+      <h3>Fiche utilisateur</h3>
+    </div>
+    <div class='containerfluid bg-light p-2 row d-flex justify-content-around align-items-center'>
+      <i class=" col text-center fas fa-user-tag fa-10x"></i>
+      <div class='show_content col container border border-warning rounded-3 border-5 mt-4 p-5 '>
+        <p>N<span class='red'>o</span>m :       <%=@user.last_name%></p>
+        <p>Prén<span class='red'>o</span>m :    <%=@user.first_name%></p>
+        <p>Email :        <%=@user.email%></p>
+        <p>Age :        <%=@user.age%></p>
+        <p>Ville :        <%=@user.city.name%></p>
+        <p>Descripti<span class='red'>o</span>n : <%=@user.description%></p>
+      </div>
+    </div>
+
+
+    <div class='containerfluid bg-secondary px-5 pt-3 pb-5 row d-flex justify-content-evenly'>
+      <h3 class='m-3 text-center'> Tous les P<span class='red'>o</span>tins de <%=@user.first_name%> <%=@user.last_name%></h3>
+      <%@user.gossips.each do |gossip|%>
+      <div class="card m-3" style="width: 18rem;">
+        <i class="far fa-newspaper fa-3x text-center mt-2"></i>
+        <div class="card-body ">
+          <h5 class="card-title"><%=gossip.title%></h5>
+          <h6 class='text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
+          <a href=<%= gossip_path(gossip.id)%> class="btn btn-warning ">Voir le potin</a>
+        </div>
+      </div>
+      <%end%>
+    </div>
+
+  </div>
+
+  
+  <footer class="footer fixed-bottom py-3 bg-light">
+    <div class="container">
+      <span class="text-muted "> © The Gossip Project & THP - By The Power Coders</span>
+    </div>
+  </footer>
+
+  </div>
+
+</body>
+</html>

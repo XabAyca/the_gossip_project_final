@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+.red{
+  color: red;
+  font-weight: bold;
+}
+
+.yellow{
+  color: #E1A700;
+  font-weight: bold;
+}
+
+.pink{
+  color: pink;
+  font-weight: bold;
+  }
+
+.card{
+  height: 250px;
+}
+
+.show_content{
+  font-size: 22px;
+  color: #454545;
+}

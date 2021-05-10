@@ -27,22 +27,23 @@
       </nav>
   </header>
   
-  <div class='container border border-warning rounded-3 border-5 mt-4 p-5 ' >
-    <h3 class='text-center'>Vous vouvez nous contacter<br>Pour vous plaindre d'apparaitre dans des p<span class='red'>o</span>tins<br>...par exemple</h3>
-    <hr class='border border-1 border-warning'>
-    <h4>Envoyez un email à :</h4>
-    <p>attends_toujours_une_reponse@pigeon.wah</p>
-    <h4>Ou appelez le :</h4>
-    <p>0890 00 25 12 (numéro du père noël)</p>
+  <div class='bg-light text-center p-3'>
+    <h3>Tu as trouvé l'espace secret ....</h3>
+    <p class='text-muted'>Grâce à l'URL secrète</p>
+    <i class="fas fa-user-secret fa-7x"></i>
   </div>
-  
+  <div class='container p-3'>
+    <h4>Bienvenue <%=params[:first_name].capitalize%> !</h4>
+    <hr class='border border-1 border-danger'>
+    <p>As tu visiter notre site de potins ?<br>
+    Il est chouette ? hein ?</p>
+  </div>
+
   <footer class="footer fixed-bottom py-3 bg-light">
     <div class="container">
       <span class="text-muted"> © The Gossip Project & THP - By The Power Coders</span>
     </div>
   </footer>
 
-
 </body>
 </html>
-
