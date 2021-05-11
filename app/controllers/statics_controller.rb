@@ -13,10 +13,6 @@ class StaticsController < ApplicationController
   def welcome
   end
 
-  def show
-    @gossip = Gossip.find(params[:id])
-  end
-
   def user_show
     @user = User.find(params[:id])
   end

@@ -1,49 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Gossip Project Contact</title>
-</head>
-<body>
-
-  <header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark px-3">
-        <a class="navbar-brand" href=<%=root_path%>>G<span class='red'>o</span>ssip Pr<span class='red'>o</span>ject</a>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href=<%=root_path%>>Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=<%=team_path%>>Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=<%=contact_path%>>Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-  </header>
-  
-  <div class='bg-light text-center p-3'>
-    <h3>Tu as trouvé l'espace secret ....</h3>
-    <p class='text-muted'>Grâce à l'URL secrète</p>
-    <i class="fas fa-user-secret fa-7x"></i>
-  </div>
-  <div class='container p-3'>
-    <h4>Bienvenue <%=params[:first_name].capitalize%> !</h4>
-    <hr class='border border-1 border-danger'>
-    <p>As tu visiter notre site de potins ?<br>
-    Il est chouette ? hein ?</p>
-  </div>
-
-  <footer class="footer fixed-bottom py-3 bg-light">
-    <div class="container">
-      <span class="text-muted"> © The Gossip Project & THP - By The Power Coders</span>
-    </div>
-  </footer>
-
-</body>
-</html>
+<div class='bg-light text-center p-3'>
+  <h3>Tu as trouvé l'espace secret ....</h3>
+  <p class='text-muted'>Grâce à l'URL secrète</p>
+  <i class="fas fa-user-secret fa-7x"></i>
+</div>
+<div class='container p-3'>
+  <h4>Bienvenue <%=params[:first_name].capitalize%> !</h4>
+  <hr class='border border-1 border-danger'>
+  <p>As tu visiter notre site de potins ?<br>
+  Il est chouette ? hein ?</p>
+</div>
