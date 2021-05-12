@@ -52,10 +52,23 @@ footer {
   list-style:none;
 }
 
-.form_new{
-  border: 4px solid red;
-  border-radius: 10px;
-  padding: 20px;
-  margin: auto;
-  max-width: 600px;
+.pink2{
+  background-color: #fca9cd;
+  height: 450px;
+  background-image: url('wife.jpeg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.date{
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.comment{
+  font-size: 12px;
+  font-style: italic;
+  color: #E1A700;
 }

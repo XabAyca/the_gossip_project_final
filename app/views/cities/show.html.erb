@@ -1,0 +1,36 @@
+<div class='containerfluid'>
+  <div class='text-center pt-5'>
+    <h3 class='m-3'>Fiche de la ville</h3>
+  </div>
+  <div class=' bg-light g-0 row align-self-center p-5'>
+    <div class='container bg-light p-2 row g-0 d-flex justify-content-around align-items-center'>
+      
+      <div class='show_content col container border border-warning rounded-3 border-5 mt-1 p-5 '>
+        <p>N<span class='red'>o</span>m :       <%=@city.name%></p>
+      </div>
+      <i class=" col text-center fas fa-university fa-10x"></i>
+    </div>
+  </div>
+
+
+  <div class='containerfluid bg-secondary px-5 pt-3 pb-5 row g-0 d-flex justify-content-evenly'>
+    <h3 class='m-3 text-center'> Tous les P<span class='red'>o</span>tins de <%=@city.name%></h3>
+    <%@city.users.each do |user|%>
+      <%user.gossips.each do |gossip|%>
+        <div class="card m-3" style="width: 18rem;">
+          <i class="far fa-newspaper fa-3x text-center mt-2"></i>
+          <div class="card-body ">
+            <h5 class="card-title"><%=gossip.title%></h5>
+            <h6 class='text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
+            <p class='comment'>Commentaire(s) <%=gossip.comments.size%></p>
+            <hr class='border border-1 border-danger'>
+          </div>
+          <div class=''>
+            <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+
+</div>

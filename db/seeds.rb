@@ -51,7 +51,7 @@ end
 
 puts "*"*20
 
-20.times do |i|
+50.times do |i|
   Comment.create(content:Faker::GreekPhilosophers.quote,user_id:User.all.sample.id,gossip_id:Gossip.all.sample.id)
   puts "#{i+1} comments created"
 end
