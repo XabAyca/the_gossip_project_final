@@ -24,7 +24,7 @@ end
 puts "*"*20
 
 10.times do |i|
-  User.create(first_name:Faker::Games::Pokemon.name,last_name:Faker::Games::SuperMario.character,description:Faker::Movies::BackToTheFuture.quote,email:Faker::Internet.email,age:rand(6..99),city_id:City.all.sample.id)
+  User.create(first_name:Faker::Games::Pokemon.name,last_name:Faker::Games::SuperMario.character,description:Faker::Movies::BackToTheFuture.quote,email:Faker::Internet.email,age:rand(6..99),city_id:City.all.sample.id,password_digest:Faker::Internet.password(min_length: 10, max_length: 20))
   puts "#{i+1} users created"
 end
 

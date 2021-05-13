@@ -6,20 +6,25 @@
     <h4>Auteur : <span class='red'><%=@gossip.user.first_name%> <%=@gossip.user.last_name%></span></h4>
     <h4>Ville de l'auteur : <span class='red'><%=@gossip.user.city.name%></h4>
     <a href=<%=user_path(@gossip.user.id)%>><button type="button"class="btn btn-warning  px-4 me-sm-3 my-3">Fiche de l'auteur</button></a>
-    <a href=<%=city_path(@gossip.user.city.id)%>><button type="button"class="btn btn-secondary  px-4 me-sm-3 my-3">La ville</button></a>  
+    <a href=<%=city_path(@gossip.user.city.id)%>><button type="button"class="btn btn-secondary  px-4 me-sm-3 my-3">La ville</button></a><br>     
   </div>
   <div class='border border-3 border-warning rounded mx-5 p-3 text-center'>
     <p class='show_content'><%=@gossip.content%></p>
   </div>
   <div class='mx-5 m-2' >
     <p class='text-muted'><%=@gossip.created_at.strftime("Ecrit le %d %B, %Y")%></p>
-    <div class='text-center'>
-    <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer le Potin</a>
-    </div>
+
+    <%if session[:user_id]== @gossip.user.id%>
+      <div class='text-center'>
+        <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger my-3" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer le Potin</a>
+        <a href=<%=edit_gossip_path(@gossip.id)%>><button type="button"class="btn btn-outline-warning me-sm-3 m-3">Modifier le potin</button></a> 
+      </div>
+    <%end%>
+
   </div>
 
   <div class='px-5 p-3 bg-light'>
-    <h3>C<span class='red'>o</span>mmentaires</h3>
+    <h3>C<span class='red'>o</span>mmentaires (<%=@gossip.comments.size%>)</h3>
     <%= form_tag gossip_comments_path(@gossip.id), method: "post" do %>
     <div class='form-group'>
       <label>Nouveau commentaire</label><br>
@@ -52,7 +57,9 @@
       <p><i class="fas fa-feather-alt"></i>  <%=comment.content%>
       <p class='text-muted date'><%=comment.created_at%>
       <br>
-      <a class='text-left' href="<%= edit_gossip_comment_path(gossip_id:@gossip.id,id:comment.id) %>" class="btn btn-link">Modifier</a>
+      <%if session[:user_id]== comment.user.id%>
+        <a class='text-left' href="<%= edit_gossip_comment_path(gossip_id:@gossip.id,id:comment.id) %>" class="btn btn-link">Modifier</a>
+      <%end%>
       <hr>
     <%end%>
   </div>

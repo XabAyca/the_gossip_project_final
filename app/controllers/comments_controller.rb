@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:create]
+  before_action :super_user ,only: [:edit,:update,:destroy]
 
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(content:params[:content],gossip_id:params[:gossip_id],user_id:11)
+    @comment = Comment.new(content:params[:content],gossip_id:params[:gossip_id],user_id:session[:user_id])
     if @comment.save
       redirect_to gossip_path(params[:gossip_id]), notice: "Le commentaire a bien été créé !"
     else
       flash.now[:messages] = @comment.errors.full_messages
-      redirect_to gossip_path(params[:gossip_id])
+      redirect_to gossip_path(params[:gossip_id]) 
     end
   end
 
@@ -39,4 +41,12 @@ class CommentsController < ApplicationController
   def post_params
     params.require(:comment).permit(:content)
   end
+
+  def super_user
+    unless current_user == Comment.find(params[:id]).user
+      flash[:danger] = "Vous n'êtes pas le créateur de ce commentaire....Si oui, prouvez le"
+      redirect_to new_session_path
+    end
+  end
+  
 end

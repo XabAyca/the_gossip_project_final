@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new,:create,:show]
+  before_action :super_user , only: [:edit,:update,:destroy]
 
   def index 
     @gossips = Gossip.all
@@ -9,7 +11,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(content:params[:content],title:params[:title],user_id:11)
+    @gossip = Gossip.new(content:params[:content],title:params[:title],user_id:session[:user_id])
     if @gossip.save
       redirect_to root_path, notice: "Le potin '#{@gossip.title.capitalize}' a bien été créé ! Félicitation"
     else
@@ -48,6 +50,12 @@ class GossipsController < ApplicationController
     params.require(:gossip).permit(:title,:content,)
   end
 
+  def super_user
+    unless current_user == Gossip.find(params[:id]).user
+      flash[:danger] = "Vous n'êtes pas le créateur de ce potin....Si oui, prouvez le"
+      redirect_to new_session_path
+    end
+  end
 
     
 end
