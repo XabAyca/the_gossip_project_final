@@ -55,9 +55,9 @@
           <% if current_user %>
 
             <!-- Si déjà liké unlike dispo-->
-            <% if Like.where(user: current_user, gossip: gossip).count != 0 %>
+            <% if gossip.likes.where(user: current_user, gossip: gossip).count != 0 %>
 
-              <a class='liked' href=<%=gossip_like_path(controller: :likes, action: :destroy, gossip_id: gossip.id,id: Like.where(user: current_user, gossip: gossip)[0].id)%> data-method='delete'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+              <a class='liked' href=<%=gossip_like_path(controller: :likes, action: :destroy, gossip_id: gossip.id,id: gossip.likes.where(user: current_user, gossip: gossip)[0].id)%> data-method='delete'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
               <%=gossip.likes.size%></p></a>
 
             <!-- sinon like dispo-->

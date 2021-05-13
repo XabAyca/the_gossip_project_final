@@ -30,8 +30,8 @@ end
 
 puts "*"*20
 
-20.times do |i|
-  Gossip.create(title:Faker::DcComics.title,content:Faker::ChuckNorris.fact,user_id:User.all.sample.id)
+30.times do |i|
+  Gossip.create(title:Faker::Military.army_rank,content:Faker::ChuckNorris.fact,user_id:User.all.sample.id)
   puts "#{i+1} gossips created"
 end
 

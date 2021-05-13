@@ -44,8 +44,35 @@
 
         <div class=''>
           <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
-        </div>
 
+          <div class='text-end mx-4'>
+
+            <!-- Si utilisateur connecté-->
+            <% if current_user %>
+
+              <!-- Si déjà liké unlike dispo-->
+              <% if gossip.likes.where(user: current_user, gossip: gossip).count != 0 %>
+
+                <a class='liked' href=<%=gossip_like_path(controller: :likes, action: :destroy, gossip_id: gossip.id,id: gossip.likes.where(user: current_user, gossip: gossip)[0].id)%> data-method='delete'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+                <%=gossip.likes.size%></p></a>
+
+              <!-- sinon like dispo-->
+              <%else%>
+
+                <a class='red red2' href=<%=gossip_likes_path(controller: :likes, action: :create, gossip_id: gossip.id)%> data-method='post'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+                <%=gossip.likes.size%></p></a>
+
+              <%end%>  
+
+            <!-- sinon pas de lien-->
+            <%else%>
+
+              <a class='red red2'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+              <%=gossip.likes.size%></p></a>
+
+            <%end%>
+          </div>
+        </div>
       </div>
     <%end%>
   </div>
