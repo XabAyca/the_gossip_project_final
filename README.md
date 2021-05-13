@@ -20,8 +20,8 @@ Commentaires
 
 ### Pour test
 Lancer     
-```rails server`       
+```rails server```         
 Puis aller sur    
-```http://localhost:3000/`   
+```http://localhost:3000/```     
 Sur votre navigateur favori...    
 Enjoy...  
