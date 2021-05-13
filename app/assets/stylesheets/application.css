@@ -13,9 +13,24 @@
  *= require_tree .
  *= require_self
  */
-.red{
+.red {
   color: red;
   font-weight: bold;
+  text-decoration: none;
+}
+
+.red2:hover{
+  color: #E1A700;
+}
+
+.liked{
+  color: #E1A700;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.liked:hover{
+  color: red;
 }
 
 .yellow{

@@ -1,16 +1,24 @@
+<!-- Modification de commentaires-->
 <div class='containerfluid bg-light my-5 p-5'>
   
+  <!-- Message Alerte-->
   <% if flash[:messages] %>
+
     <div class="container p-1 text-center alert  alert-danger" role="alert">
+
       <p>Nous n'avons pas réussi à modifier le commentaire pour la (ou les) raison(s) suivante(s) :</p>
+
       <ul>
         <% flash[:messages].each do |message| %>
           <li><%=message%></li>
         <% end %>
       </ul>
+      
     </div>
+
   <% end %>
 
+  <!-- input et boutons-->
   <div class='text-center pb-4'> 
     <h3>Tu peux modifier/supprimer ton commentaire ici</h3>
   </div>
@@ -20,10 +28,15 @@
     <div class='form-group'>
       <%= f.text_area :content, value:@comment.content, autofocus: true, class:'form-control' %>
     </div>
+
     <br>
+
     <div class='form-group'>
+
       <button type=submit class='btn btn-success'>Valider</button>
+
       <a href="<%= gossip_comment_path(@comment.id) %>" class="btn btn-danger" data-confirm="êtes-vous sur?" data-method="DELETE">Supprimer</a>
+      
     </div>
 
   <% end %>

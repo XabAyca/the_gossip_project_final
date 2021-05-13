@@ -1,35 +1,82 @@
+<!-- page d'accueil et tous les gossips-->
+
+<!-- hero-->
 <div class="px-3 mt-5 pt-3 pb-4 text-center">
+
   <i class="fas fa-highlighter fa-5x"></i>
+
   <h1 class="display-5 fw-bold">G<span class='red'>o</span>ssip Pr<span class='red'>o</span>ject</h1>
+
   <div class="col-lg-6 mx-auto">
+
     <p class="lead mb-4">Le meilleur site de potins que tu puisses trouver sur la toile<br>
     Tu trouveras sur cette première page tous les potins que nous détennons...</p>
+
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a href=<%=new_gossip_path%>><button type="button"class="btn btn-danger btn-lg px-4 me-sm-3">Proposer un Potin</button></a>
       <a href=<%=contact_path%>><button type="button" class="btn btn-outline-secondary btn-lg px-4">Nous contacter</button></a>
     </div>
+
+    <!-- Messages alertes-->
     <% if flash[:notice] %>
       <br>
       <div class="container p-1 text-center alert  alert-success" role="alert"><%= flash[:notice] %></div>
     <% end %>
+
   </div>
 </div>
 
+<!-- Tous les potins-->
 <div class='bg-secondary px-5 pt-3 pb-5 row g-0 d-flex justify-content-evenly'>
+
   <%@gossips.each do |gossip|%>
-  <div class=" card m-3" style="width: 18rem;">
-    <i class=" far fa-newspaper fa-3x text-center mt-2"></i>
-    <div class="card-body">
-      <h5 class=" card-title"><%=gossip.title%></h5>
-      <h6 class=' text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
-      <p class='comment'>Commentaire(s) <%=gossip.comments.size%></p>
-      <hr class='border border-1 border-danger'>
+
+    <div class=" card m-3" style="width: 18rem;">
+
+      <i class=" far fa-newspaper fa-3x text-center mt-2"></i>
+
+      <div class="card-body">
+
+        <h5 class=" card-title"><%=gossip.title%></h5>
+        <h6 class=' text-secondary'><span class='red'>Auteur </span><%=gossip.user.first_name%> <%=gossip.user.last_name%></h6>
+        <p class='comment'>Commentaire(s) <%=gossip.comments.size%></p>
+        <hr class='border border-1 border-danger'>
+
+      </div>
+
+      <!-- Boutons et likes/unlikes-->
+      <div>
+
+        <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
+
+        <div class='text-end mx-4'>
+
+          <!-- Si utilisateur connecté-->
+          <% if current_user %>
+
+            <!-- Si déjà liké unlike dispo-->
+            <% if Like.where(user: current_user, gossip: gossip).count != 0 %>
+
+              <a class='liked' href=<%=gossip_like_path(controller: :likes, action: :destroy, gossip_id: gossip.id,id: Like.where(user: current_user, gossip: gossip)[0].id)%> data-method='delete'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+              <%=gossip.likes.size%></p></a>
+
+            <!-- sinon like dispo-->
+            <%else%>
+
+              <a class='red red2' href=<%=gossip_likes_path(controller: :likes, action: :create, gossip_id: gossip.id)%> data-method='post'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+              <%=gossip.likes.size%></p></a>
+
+            <%end%>  
+
+          <!-- sinon pas de lien-->
+          <%else%>
+
+            <a class='red red2'><p ><i class="fas fa-pepper-hot fa-2x text-right"></i>  
+            <%=gossip.likes.size%></p></a>
+
+          <%end%>
+        </div>
+      </div> 
     </div>
-      
-    <div class=''>
-      <a href=<%= gossip_path(gossip.id)%> class="position-absolute bottom-0 end-50 my-2 btn btn-warning">Voir le potin</a>
-    </div>
-      
-  </div>
   <%end%>
 </div>

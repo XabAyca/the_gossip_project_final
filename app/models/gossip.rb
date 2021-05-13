@@ -7,7 +7,7 @@ class Gossip < ApplicationRecord
 
   validates :title, 
     presence: {message:"Le titre est obligatoire"}, 
-    length:   {minimum: 2,maximum: 30, message:"Le titre doit faire entre 2 et 30 caractères"}
+    length:   {minimum: 2,maximum: 20, message:"Le titre doit faire entre 2 et 20 caractères"}
     
   validates :content,
     presence: {message:"Le potin est obligatoire"},

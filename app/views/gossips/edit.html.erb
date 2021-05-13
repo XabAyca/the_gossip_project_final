@@ -1,34 +1,50 @@
+<!-- Modification de gossips-->
+
+
 <div class='container my-5 py-4 '>
+
+  <!-- Messages alertes-->
   <% if flash[:messages] %>
+
     <div class="container p-1 text-center alert  alert-danger" role="alert">
+
       <p>Nous n'avons pas réussi à modifier le potin pour la (ou les) raison(s) suivante(s) :</p>
+
       <ul>
         <% flash[:messages].each do |message| %>
           <li><%=message%></li>
         <% end %>
       </ul>
+
     </div>
   <% end %>
 
+  <!-- input et boutons-->
   <%= form_for @gossip do |f| %>
 
     <div class='form-group'>
       <label>Titre du P<span class='red'>o</span>tin</label><br>
       <%= f.text_field :title, class:'form-control' %>
     </div>
+
     <br>
+
     <div class='form-group'>
       <label>Contenu du P<span class='red'>o</span>tin</label><br>
       <%= f.text_area :content, class:'form-control' %>
     </div>
+
     <br>
+
     <div class='form-group'>
       <button type=submit class='btn btn-success'>Modifier le Potin</button>
     </div>
 
   <% end %>
 
+  <!-- image-->
   <div class='p-5 m-5 text-center'>
     <i class="fas fa-code fa-10x"></i>
   </div>
+  
 </div>
